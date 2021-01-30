@@ -3,21 +3,117 @@
   <head>
     <title>Saiful Akbar</title>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Stock control aplication" />
+    <meta
+      name="keywords"
+      content="stock, control, stock control, sco, feelbuy, lock & lock"
+    />
+    <meta name="author" content="Stock Control" />
+
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700"
     />
+
+    <!-- style css -->
+    <style>
+      body {
+        background-color: #0d1418;
+      }
+
+      .bg-light {
+        background-color: #ffffff !important;
+      }
+
+      /* Preloader */
+      #preloader {
+        background-color: #0d1418;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 9999;
+      }
+
+      #preloader div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        margin: 8px;
+        border-radius: 50%;
+        animation: preloader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border: 6px solid #2979ff;
+        border-color: #2979ff transparent transparent transparent;
+      }
+
+      #preloader div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+
+      #preloader div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+
+      #preloader div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+
+      @keyframes preloader {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* End preloader */
+    </style>
   </head>
 
-  <body class="body">
+  <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div id="preloader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
     <div id="root"></div>
+
+    <script>
+      (function() {
+        if (
+          document.cookie
+            .split(';')
+            .some(value => value.trim() === 'theme=light')
+        ) {
+          document.querySelector('body').classList.add('bg-light');
+          document.getElementById('preloader').classList.add('bg-light');
+        }
+      })();
+    </script>
   </body>
 </html>

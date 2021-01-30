@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   ListItem,
@@ -9,7 +8,7 @@ import {
   ListItemText
 } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   item: {
     display: 'flex',
     paddingTop: 0,
@@ -29,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1)
   },
   title: {
-    marginRight: 'auto',
-    fontWight: 500,
+    color: theme.palette.text.secondary,
+    marginRight: 'auto'
   },
   active: {
     color: theme.palette.primary.main,
@@ -43,36 +42,27 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     width: 30,
-    height: 30,
+    height: 30
   }
 }));
 
-const NavItem = ({
-  className,
-  href,
-  icon: Icon,
-  title,
-  ...rest
-}) => {
+const NavItem = ({ className, icon: Icon, title, onClickMenu, ...rest }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.item}>
       <ListItem
         button
+        onClick={onClickMenu}
         className={classes.button}
-        component={RouterLink}
-        to={href}
         {...rest}
       >
         <ListItemAvatar>
           <Avatar className={classes.avatar}>
-            {Icon && (
-              <Icon size="20" />
-            )}
+            {Icon && <Icon size="20" />}
           </Avatar>
         </ListItemAvatar>
-        <ListItemText className={classes.title} primary={title} />
+        <ListItemText className={classes.title}>{title}</ListItemText>
       </ListItem>
     </div>
   );

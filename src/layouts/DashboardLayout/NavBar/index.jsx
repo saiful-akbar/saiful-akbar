@@ -9,11 +9,20 @@ import {
   Hidden,
   List,
   Typography,
-  makeStyles
+  makeStyles,
+  IconButton,
+  Link,
+  Tooltip
 } from '@material-ui/core';
 import {
-  ShoppingBag as ShoppingBagIcon,
-  Home as HomeIcon
+  Grid as GridIcon,
+  Home as HomeIcon,
+  User as UserIcon,
+  Mail as MailIcon,
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  GitHub as GitHubIcon,
+  Instagram as InstagramIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -25,27 +34,39 @@ const user = {
 
 const items = [
   {
-    href: '/',
     icon: HomeIcon,
-    title: 'Welcome'
+    title: 'Welcome',
+    id: 'welcome'
   },
   {
-    href: '/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
+    icon: GridIcon,
+    title: 'Portofolio',
+    id: 'portofolio'
+  },
+  {
+    icon: UserIcon,
+    title: 'About Me',
+    id: 'about'
+  },
+  {
+    icon: MailIcon,
+    title: 'Contact',
+    id: 'contact'
   }
 ];
 
 const useStyles = makeStyles(theme => ({
   mobileDrawer: {
     backgroundColor: theme.palette.background.dark,
-    width: 256
+    width: 256,
+    overflowX: 'hidden'
   },
   desktopDrawer: {
     backgroundColor: theme.palette.background.dark,
     width: 256,
     height: '100%',
-    borderRight: 'none'
+    borderRight: 'none',
+    overflowX: 'hidden'
   },
   avatar: {
     cursor: 'pointer',
@@ -66,6 +87,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
+  const handleClickMenu = value => {
+    onMobileClose();
+    const el = document.getElementById(value);
+    el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
@@ -75,27 +102,91 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           src={user.avatar}
           to="/app/account"
         />
+
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
+
         <Typography color="textSecondary" variant="body2">
           {user.email}
         </Typography>
       </Box>
+
       <Divider />
+
       <Box pr={2}>
         <List>
           {items.map(item => (
             <NavItem
-              href={item.href}
               key={item.title}
               title={item.title}
               icon={item.icon}
+              onClickMenu={() => handleClickMenu(item.id)}
             />
           ))}
         </List>
       </Box>
+
       <Box flexGrow={1} />
+      <Divider />
+
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        p={1}
+      >
+        <Tooltip title="Facebook">
+          <IconButton
+            color="primary"
+            component={Link}
+            href="https://facebook.com/ackbar.syaiful/"
+            target="_blank"
+          >
+            <FacebookIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Twitter">
+          <IconButton
+            color="primary"
+            component={Link}
+            href="https://twitter.com/Saiful_akbar13/"
+            target="_blank"
+          >
+            <TwitterIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Instagram">
+          <IconButton
+            color="primary"
+            component={Link}
+            href="https://www.instagram.com/saifulakbar13/"
+            target="_blank"
+          >
+            <InstagramIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Github">
+          <IconButton
+            color="primary"
+            component={Link}
+            href="https://github.com/saiful-akbar/"
+            target="_blank"
+          >
+            <GitHubIcon />
+          </IconButton>
+        </Tooltip>
+
+        <Tooltip title="Mail">
+          <IconButton color="primary" href="mailto:saifulakbar.job@gmail.com">
+            <MailIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
     </Box>
   );
 

@@ -1,32 +1,19 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-  makeStyles
-} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: theme.palette.background.dark,
-    height: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    marginBottom: theme.spacing(10)
   }
 }));
 
-const Page = forwardRef(({
-  children,
-  ...rest
-}, ref) => {
+const Page = forwardRef(({ children, ...rest }, ref) => {
   const classes = useStyles();
 
   return (
-    <div
-      ref={ref}
-      {...rest}
-    >
-      <div className={classes.root}>
-        {children}
-      </div>
+    <div ref={ref} className={classes.root} {...rest}>
+      {children}
     </div>
   );
 });
