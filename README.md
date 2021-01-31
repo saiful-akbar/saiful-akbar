@@ -6,7 +6,7 @@
 
 ## My Personal Website
 
-This application is a personal website for Saiful Akbar
+This application is a personal website for `Saiful Akbar`
 
 ## Technology used
 
