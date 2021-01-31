@@ -90,9 +90,10 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const handleClickMenu = (event, value) => {
     const el = document.getElementById(value);
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     setTimeout(() => {
       onMobileClose();
-    }, 500);
+    }, 1000);
   };
 
   const content = (
