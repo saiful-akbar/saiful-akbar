@@ -4,6 +4,7 @@
   "licence": "MIT",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://saiful-akbar13.web.app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

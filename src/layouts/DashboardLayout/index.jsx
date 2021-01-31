@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { makeStyles, Container, CssBaseline, Grid } from '@material-ui/core';
+import {
+  makeStyles,
+  Container,
+  CssBaseline,
+  Grid,
+  Box
+} from '@material-ui/core';
 import Welcome from 'src/views/Welcome';
 import NavBar from './NavBar';
 import TopBar from './TopBar';
 import Portofolio from 'src/views/Portofolio';
 import About from 'src/views/About';
 import Contact from 'src/views/Contact';
+import Footer from './Footer';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,6 +67,10 @@ const DashboardLayout = () => {
             </Container>
           </div>
         </div>
+
+        <Box flexGrow={1} />
+
+        <Footer />
       </div>
     </React.Fragment>
   );
