@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://saiful-akbar13.web.app" target="_blank">
-<img src="https://github.com/saiful-akbar/saiful-akbar/tree/main/public/static/images/logo/logo-circle" width="400">
+<img src="https://raw.githubusercontent.com/saiful-akbar/saiful-akbar/main/public/static/images/logo/logo-circle.png" width="400">
 </a>
 </p>
 
