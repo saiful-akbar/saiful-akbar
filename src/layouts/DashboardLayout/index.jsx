@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import TopBar from './TopBar';
 import Portofolio from 'src/views/Portofolio';
 import About from 'src/views/About';
+import Contact from 'src/views/Contact';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   wrapper: {
     paddingTop: 50,
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       paddingLeft: 256
     }
   },
@@ -47,8 +48,13 @@ const DashboardLayout = () => {
                 <Grid item xs={12}>
                   <Portofolio />
                 </Grid>
+
                 <Grid item xs={12}>
                   <About />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <Contact />
                 </Grid>
               </Grid>
             </Container>

@@ -12,6 +12,9 @@ const useStyles = makeStyles({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100%'
+  },
+  content: {
+    height: 180
   }
 });
 
@@ -23,9 +26,9 @@ export default function MediaCard({ image, title, description, ...props }) {
       <Card elevation={5}>
         <CardMedia className={classes.media} image={image} title="Media Card" />
 
-        <CardContent>
-          <Typography noWrap gutterBottom variant="h4">
-            {title}
+        <CardContent className={classes.content}>
+          <Typography noWrap gutterBottom variant="h5">
+            {title.toUpperCase()}
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">

@@ -87,10 +87,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
-  const handleClickMenu = value => {
-    onMobileClose();
+  const handleClickMenu = (event, value) => {
     const el = document.getElementById(value);
-    el.scrollIntoView({ behavior: 'smooth' });
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      onMobileClose();
+    }, 500);
   };
 
   const content = (
@@ -103,7 +105,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           to="/app/account"
         />
 
-        <Typography className={classes.name} color="textPrimary" variant="h5">
+        <Typography color="textPrimary" variant="h5">
           {user.name}
         </Typography>
 
@@ -121,7 +123,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
               key={item.title}
               title={item.title}
               icon={item.icon}
-              onClickMenu={() => handleClickMenu(item.id)}
+              onClickMenu={e => handleClickMenu(e, item.id)}
             />
           ))}
         </List>
@@ -192,7 +194,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
   return (
     <>
-      <Hidden lgUp>
+      <Hidden mdUp>
         <Drawer
           anchor="left"
           classes={{ paper: classes.mobileDrawer }}
@@ -204,7 +206,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </Drawer>
       </Hidden>
 
-      <Hidden mdDown>
+      <Hidden smDown>
         <Drawer
           anchor="left"
           classes={{ paper: classes.desktopDrawer }}

@@ -17,8 +17,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ThemeMode from './ThemeMode';
 
-// Komponen Elevation scroll
-function ElevationScroll(props) {
+// Komponen hide on scroll
+function HideOnScroll(props) {
   const { children, window } = props;
   const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
@@ -27,6 +27,26 @@ function ElevationScroll(props) {
       {children}
     </Slide>
   );
+}
+
+// Default props untuk komponent HideOnScroll
+HideOnScroll.propTypes = {
+  children: PropTypes.element.isRequired,
+  window: PropTypes.func
+};
+
+// Komponen Elevation scroll
+function ElevationScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined
+  });
+
+  return React.cloneElement(children, {
+    elevation: trigger ? 4 : 0
+  });
 }
 
 // Default props untuk komponent ElevationScroll
@@ -39,11 +59,11 @@ ElevationScroll.propTypes = {
 const useStyles = makeStyles(theme => ({
   appBar: {
     backgroundColor: theme.palette.background.dark,
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('md')]: {
       width: 'calc(100% - 256px)',
       marginLeft: 256
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%'
     }
   },
@@ -54,7 +74,8 @@ const useStyles = makeStyles(theme => ({
   fab: {
     position: 'fixed',
     bottom: theme.spacing(2),
-    right: theme.spacing(2)
+    right: theme.spacing(2),
+    zIndex: theme.zIndex.appBar + 1
   }
 }));
 
@@ -74,7 +95,7 @@ function ScrollTop(props) {
     );
 
     if (anchor) {
-      anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -97,27 +118,31 @@ ScrollTop.propTypes = {
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
 
+  const content = (
+    <AppBar className={clsx(classes.appBar, className)} elevation={0} {...rest}>
+      <Toolbar variant="dense">
+        <Hidden mdUp>
+          <IconButton color="default" onClick={onMobileNavOpen}>
+            <MenuIcon fontSize="small" />
+          </IconButton>
+        </Hidden>
+
+        <Box flexGrow={1} />
+
+        <ThemeMode />
+      </Toolbar>
+    </AppBar>
+  );
+
   return (
     <>
-      <ElevationScroll>
-        <AppBar
-          className={clsx(classes.appBar, className)}
-          elevation={0}
-          {...rest}
-        >
-          <Toolbar variant="dense">
-            <Hidden lgUp>
-              <IconButton color="default" onClick={onMobileNavOpen}>
-                <MenuIcon fontSize="small" />
-              </IconButton>
-            </Hidden>
+      <Hidden smDown>
+        <HideOnScroll>{content}</HideOnScroll>
+      </Hidden>
 
-            <Box flexGrow={1} />
-
-            <ThemeMode />
-          </Toolbar>
-        </AppBar>
-      </ElevationScroll>
+      <Hidden mdUp>
+        <ElevationScroll>{content}</ElevationScroll>
+      </Hidden>
 
       <div id="back-to-top-anchor" />
 

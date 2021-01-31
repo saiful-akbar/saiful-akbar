@@ -6,7 +6,7 @@ import Page from 'src/components/Page';
 const items = [
   {
     image: '/static/images/portofolio/sm-inventory.png',
-    title: 'Slow Motor Inventory',
+    title: 'SLOW MOTOR INVENTORY',
     description:
       'Web application to manage spare parts inventory data at slow motor repair shop.'
   },

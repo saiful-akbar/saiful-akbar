@@ -13,6 +13,10 @@ import { Card, CardHeader, CardContent } from '@material-ui/core';
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark
+  },
+  content: {
+    height: 600,
+    overflow: 'auto'
   }
 }));
 
@@ -22,7 +26,7 @@ export default function Education() {
   return (
     <Card variant="outlined" className={classes.root}>
       <CardHeader title="My Education" />
-      <CardContent>
+      <CardContent className={classes.content}>
         <Timeline align="left">
           <TimelineItem>
             <TimelineOppositeContent>
@@ -33,7 +37,7 @@ export default function Education() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="body1">
                 Bachelor Degree / Pamulang University
               </Typography>
             </TimelineContent>
@@ -48,7 +52,7 @@ export default function Education() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="body1">
                 Senior High School / SMK Sasmita Jaya
               </Typography>
             </TimelineContent>
@@ -63,7 +67,7 @@ export default function Education() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="body1">
                 Junior High School / SMP Nusantara Plus
               </Typography>
             </TimelineContent>
@@ -78,7 +82,7 @@ export default function Education() {
               <TimelineConnector />
             </TimelineSeparator>
             <TimelineContent>
-              <Typography gutterBottom variant="h5">
+              <Typography gutterBottom variant="body1">
                 Elementary School / SD N Kampung Bulak 1
               </Typography>
             </TimelineContent>

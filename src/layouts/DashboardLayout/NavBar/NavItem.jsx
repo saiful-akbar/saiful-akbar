@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     padding: '10px 8px',
     textTransform: 'none',
     width: '100%',
-    borderRadius: '0 25px 25px 0'
+    borderRadius: '0 50px 50px 0'
   },
   icon: {
     marginRight: theme.spacing(1)
@@ -41,8 +41,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   avatar: {
-    width: 30,
-    height: 30
+    backgroundColor: theme.palette.primary.dark,
+    color: '#FFF'
   }
 }));
 

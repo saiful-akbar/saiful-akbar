@@ -3,6 +3,7 @@ import Page from 'src/components/Page';
 import { Typography, Divider, Box, Grid } from '@material-ui/core';
 import Profile from './Profile';
 import Education from './Education';
+import Skill from './Skill';
 
 const About = () => {
   return (
@@ -21,12 +22,16 @@ const About = () => {
           alignItems="flex-start"
           spacing={3}
         >
-          <Grid item sm={10} xs={12}>
+          <Grid item md={6} xs={12}>
             <Profile />
           </Grid>
 
-          <Grid item sm={10} xs={12}>
+          <Grid item md={6} xs={12}>
             <Education />
+          </Grid>
+
+          <Grid item xs={12}>
+            <Skill />
           </Grid>
         </Grid>
       </Box>
