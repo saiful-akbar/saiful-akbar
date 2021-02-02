@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Avatar,
@@ -25,12 +25,6 @@ import {
   Instagram as InstagramIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-
-const user = {
-  avatar: '/static/images/avatars/saiful-akbar.jpg',
-  name: 'Saiful Akbar',
-  email: 'saifulakbar.job@gmail.com'
-};
 
 const items = [
   {
@@ -69,7 +63,6 @@ const useStyles = makeStyles(theme => ({
     overflowX: 'hidden'
   },
   avatar: {
-    cursor: 'pointer',
     width: 80,
     height: 80,
     marginBottom: theme.spacing(1)
@@ -101,17 +94,16 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
           className={classes.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
+          src="/static/images/avatars/saiful-akbar.jpg"
+          alt="Avatar"
         />
 
         <Typography color="textPrimary" variant="h5">
-          {user.name}
+          Saiful Akbar
         </Typography>
 
         <Typography color="textSecondary" variant="body2">
-          {user.email}
+          saifulakbar.job@gmail.com
         </Typography>
       </Box>
 
