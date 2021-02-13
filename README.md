@@ -10,5 +10,5 @@ This application is a personal website for **Saiful Akbar**
 
 ## Technology used
 
-- [React JS](https://reactjs.org/)
-- [Matetial-IU](https://material-ui.com/)
+- **[React JS](https://reactjs.org/)**
+- **[Material-IU](https://material-ui.com/)**
